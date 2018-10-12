@@ -2,6 +2,9 @@
    agent any 
    
    stages {
+     stage('init'){
+       sh 'export M2_HOME=/home/kanaano/fm/software/apache-maven-3.5.4/'
+     }
      stage('Build'){
        steps {
          sh 'mvn clean package'
