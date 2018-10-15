@@ -15,12 +15,12 @@
         parallel {
         stage ('Deploy to staging'){
             steps {
-            sh "yes | scp -o StrictHostKeyChecking=no -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+            sh "yes | scp -o StrictHostKeyChecking=no -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_dev}:/var/lib/jenkins/workspace/pipelineAsCode/webapp/target/webapp.war"
             }
         }
         stage ('Deploy to prod'){
             steps {
-            sh "yes | scp -o StrictHostKeyChecking=no -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_prd}:/var/lib/tomcat7/webapps"
+            sh "yes | scp -o StrictHostKeyChecking=no -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_prd}:/var/lib/jenkins/workspace/pipelineAsCode/webapp/target/webapp.war"
             }
         }
         }
