@@ -10,18 +10,20 @@
      pollSCM('* * * * *')
    }
    
-   stag ('Deployments') {
-     parallel {
-       stage ('Deploy to staging'){
-         steps {
-           sh "scp -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
-         }
-       }
-       stage ('Deploy to prod'){
-         steps {
-           sh "scp -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_prd}:/var/lib/tomcat7/webapps"
-         }
-       }
-     }
+   stages{
+    stage ('Deployments') {
+        parallel {
+        stage ('Deploy to staging'){
+            steps {
+            sh "scp -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+            }
+        }
+        stage ('Deploy to prod'){
+            steps {
+            sh "scp -i /home/kanaano/Downloads/tomcat.pem **/*.war ec2-user@${params.tomcat_prd}:/var/lib/tomcat7/webapps"
+            }
+        }
+        }
+    }
    }
  }
