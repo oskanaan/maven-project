@@ -4,4 +4,4 @@
  
  EXPOSE 8080
  
- CMD ["catalyst.sh", "run"]
+ CMD ["catalina.sh", "run"]
