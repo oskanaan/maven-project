@@ -5,12 +5,12 @@
    stages{
     stage ('Build') {
         steps {
-          sh "
+          sh """
             export M2_HOME=/home/kanaano/fm/software/apache-maven-3.5.4/
             export PATH=/home/kanaano/fm/software/apache-maven-3.5.4/bin:$PATH
             mvn clean package
             docker build . -t tomcatwebapp:${env.BUILD_ID}
-          "
+          """
         }
     }
    }
